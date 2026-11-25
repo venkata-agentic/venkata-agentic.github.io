@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venkata Pedereddla | Technical program manager building Claude agents</title>
+<meta name="description" content="Technical program manager with 20+ years in infrastructure and AI delivery, building agents on Claude. Projects, build log and credentials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3F5F7;
+    --ink: #1C2433;
+    --muted: #5B6576;
+    --rule: #D5DAE1;
+    --link: #3346C9;
+    --done: #2F7A4D;
+    --doing: #A86A12;
+    --next: #8A93A3;
+    --trace-bg: #1C2433;
+    --trace-ink: #DCE3EC;
+    --measure: 66ch;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-variation-settings: "wdth" 100;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: var(--link); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* Hero */
+  header.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+    padding: 88px 0 72px;
+  }
+  .name { font-weight: 600; margin: 0 0 28px; color: var(--muted); }
+  h1 {
+    font-size: clamp(2.4rem, 5.2vw, 4rem);
+    line-height: 1.02;
+    font-weight: 800;
+    font-variation-settings: "wdth" 70;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+  }
+  .lede { max-width: 46ch; margin: 0 0 28px; color: var(--ink); }
+  .links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; padding: 0; list-style: none; font-weight: 600; }
+
+  /* The trace: the one bold element */
+  figure.trace { margin: 0; }
+  .trace pre {
+    margin: 0;
+    background: var(--trace-bg);
+    color: var(--trace-ink);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.86rem;
+    line-height: 1.75;
+    padding: 26px 28px;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+  .trace .k { color: #8FA3BF; }
+  .trace .ok { color: #7BD39A; }
+  .trace .gate { color: #F2C46D; }
+  .trace figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 12px; max-width: 52ch; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .trace pre span.line { opacity: 0; animation: show 0.01s forwards; }
+    .trace pre span.line:nth-child(1) { animation-delay: .15s; }
+    .trace pre span.line:nth-child(2) { animation-delay: .45s; }
+    .trace pre span.line:nth-child(3) { animation-delay: .75s; }
+    .trace pre span.line:nth-child(4) { animation-delay: 1.05s; }
+    .trace pre span.line:nth-child(5) { animation-delay: 1.35s; }
+    .trace pre span.line:nth-child(6) { animation-delay: 1.65s; }
+    .trace pre span.line:nth-child(7) { animation-delay: 1.95s; }
+    .trace pre span.line:nth-child(8) { animation-delay: 2.3s; }
+    @keyframes show { to { opacity: 1; } }
+  }
+
+  /* Sections */
+  main section { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .sec { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    font-variation-settings: "wdth" 80;
+    margin: 0;
+  }
+  h3 { font-size: 1.25rem; font-weight: 700; margin: 0 0 8px; line-height: 1.3; }
+  p { margin: 0 0 16px; max-width: var(--measure); }
+  .body > :last-child { margin-bottom: 0; }
+
+  /* Milestones: a real sequence, so it is an ordered list */
+  ol.milestones { list-style: none; margin: 24px 0 28px; padding: 0; max-width: var(--measure); }
+  ol.milestones li { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  ol.milestones li:last-child { border-bottom: 0; }
+  .status { font-weight: 700; font-size: 0.95rem; }
+  .status::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; background: currentColor; }
+  .s-done { color: var(--done); }
+  .s-doing { color: var(--doing); }
+  .s-next { color: var(--next); }
+
+  ul.rules { margin: 0 0 16px; padding-left: 1.2em; max-width: var(--measure); }
+  ul.rules li { margin-bottom: 6px; }
+
+  /* Build log: dated, newest first */
+  .log { margin: 0; max-width: var(--measure); }
+  .log div { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .log div:last-child { border-bottom: 0; }
+  .log dt { font-weight: 600; color: var(--muted); }
+  .log dd { margin: 0; }
+
+  .creds { columns: 2; column-gap: 40px; margin: 0; padding-left: 1.2em; max-width: var(--measure); }
+  .creds li { margin-bottom: 6px; break-inside: avoid; }
+
+  .career { margin: 0; padding: 0; list-style: none; max-width: var(--measure); }
+  .career li { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 8px 0; }
+  .career .yrs { color: var(--muted); }
+
+  footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 860px) {
+    header.hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 56px 0 48px; }
+    .sec { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    ol.milestones li, .log div, .career li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .creds { columns: 1; }
+    .trace pre { font-size: 0.78rem; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div>
+      <p class="name">Venkata Pedereddla, Halifax, Canada</p>
+      <h1>I've run AI programs for years. Now I build the agents myself.</h1>
+      <p class="lede">I'm a technical program manager with 20+ years from network engineering to AI delivery at IBM and Microsoft. I'm working toward leading AI delivery organizations, and this site is my public build log: what I'm making on Claude, how it's guarded, and what I learned.</p>
+      <ul class="links">
+        <li><a href="#jobpilot">See the agent</a></li>
+        <li><a href="https://github.com/venkata-agentic">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/venkatapedereddla">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <figure class="trace" aria-labelledby="trace-cap">
+<pre><span class="line"><span class="k">run</span>     2026-11-24 17:56   unattended, scheduled
+</span><span class="line"><span class="k">read</span>    preferences.yaml  master_resume.md
+</span><span class="line"><span class="k">tool</span>    search_jobs        x18
+</span><span class="line"><span class="k">tool</span>    get_job_details    x26
+</span><span class="line"><span class="k">write</span>   jobs/inbox/        12 roles saved
+</span><span class="line"><span class="gate">gate</span>    submit             0 sent, by design
+</span><span class="line"><span class="k">report</span>  jobs/reports/2026-11-24.md
+</span><span class="line"><span class="ok">done</span>    exit 0             5 min 34 s</span></pre>
+      <figcaption id="trace-cap">Today's run of JobPilot, my job-search agent, condensed from its log. It searches and reads postings on its own. Applying stays with me.</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section id="jobpilot" aria-labelledby="h-jobpilot">
+      <div class="sec">
+        <h2 id="h-jobpilot">What I'm building</h2>
+        <div class="body">
+          <h3>JobPilot, a job-search agent on Claude</h3>
+          <p>Every weekday it searches Indeed for program and AI-delivery roles in Canada, the US and India, reads each posting in full, keeps the ones that fit my background, and writes a report explaining what it kept and skipped. It runs headless through Claude Code on a Windows schedule, with no one watching.</p>
+
+          <ol class="milestones" aria-label="Build progress, in order">
+            <li><span class="status s-done">Done</span><span>Project setup: master resume, preferences, a tracker and 10 real postings</span></li>
+            <li><span class="status s-done">Running</span><span>Daily unattended search with a written report per run</span></li>
+            <li><span class="status s-doing">In progress</span><span>Posting parser: every job as a validated record, with unknown facts left empty instead of guessed</span></li>
+            <li><span class="status s-next">Next</span><span>Fit scorer measured against my own labels, then a tailoring skill, a tracker MCP server and an approval-gated apply step</span></li>
+          </ol>
+
+          <p>The guardrails matter as much as the features:</p>
+          <ul class="rules">
+            <li>The agent can read anything in the project but can only write inside its jobs folder. Every other tool is denied.</li>
+            <li>It never fills in, starts or submits an application. I click Submit.</li>
+            <li>Any work-authorization question comes back marked "needs my answer". It doesn't guess.</li>
+            <li>It only uses sources that allow automated access. No scraping.</li>
+          </ul>
+          <p><a href="https://github.com/venkata-agentic/job-pilot">Code and design notes on GitHub</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-log">
+      <div class="sec">
+        <h2 id="h-log">Build log</h2>
+        <div class="body">
+          <p>What I learned building on Claude, newest first.</p>
+          <dl class="log">
+            <div><dt>Nov 24, 2026</dt><dd>Third scheduled run: 18 searches, 26 postings read in full, 12 saved, nothing submitted. Each saved role comes with a one-line reason and a list of gaps to check before applying.</dd></div>
+            <div><dt>Nov 22, 2026</dt><dd>First unattended run. An agent with no one watching needs an explicit tool allowlist, so the scheduled script names the few tools it may use and limits writes to one folder.</dd></div>
+            <div><dt>Nov 22, 2026</dt><dd>Strict structured output enforces the schema's shape but not every constraint. Length limits still need a check in code.</dd></div>
+            <div><dt>Nov 22, 2026</dt><dd>When a posting doesn't state a remote policy, "unknown" is the right answer. A confident guess is worse than an empty field.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-creds">
+      <div class="sec">
+        <h2 id="h-creds">Credentials</h2>
+        <div class="body">
+          <ul class="creds">
+            <li>Claude Architect, Foundation</li>
+            <li>Claude Associate (Anthropic, 2026)</li>
+            <li>PMI-CPMAI, AI project management</li>
+            <li>NVIDIA-Certified Associate: AI Infrastructure and Operations</li>
+            <li>SAFe</li>
+            <li>ITIL</li>
+            <li>CSM and CSPO</li>
+            <li>MBA, Information Systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-career">
+      <div class="sec">
+        <h2 id="h-career">Background</h2>
+        <div class="body">
+          <p>I started as a hands-on network engineer and moved into delivery leadership, so I can follow an engineering trade-off and turn it into a decision executives can act on.</p>
+          <ul class="career">
+            <li><span class="yrs">2019 to now</span><span>IBM Canada: senior project manager and TPM, now leading delivery for an AI advisory engagement from proof of concept to governed production</span></li>
+            <li><span class="yrs">2018 to 2019</span><span>Microsoft: program manager for a $22M shared-services transformation across 100+ sites</span></li>
+            <li><span class="yrs">2012 to 2017</span><span>HCL Technologies: senior manager, global infrastructure programs</span></li>
+            <li><span class="yrs">2006 to 2012</span><span>Wipro and ACI Worldwide: network engineer and infrastructure operations lead</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built with Claude Code and hosted free on GitHub Pages. Updated as the agent grows.</p>
+  </footer>
+
+</div>
+</body>
+</html>
