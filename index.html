@@ -40,27 +40,28 @@
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
   /* Hero */
-  header.hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: 56px;
-    align-items: center;
-    padding: 88px 0 72px;
-  }
+  header.hero { padding: 88px 0 64px; }
   .name { font-weight: 600; margin: 0 0 28px; color: var(--muted); }
   h1 {
-    font-size: clamp(2.4rem, 5.2vw, 4rem);
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    max-width: 24ch;
     line-height: 1.02;
     font-weight: 800;
     font-variation-settings: "wdth" 70;
     letter-spacing: -0.01em;
     margin: 0 0 24px;
   }
-  .lede { max-width: 46ch; margin: 0 0 28px; color: var(--ink); }
+  .tagline { font-size: 1.3rem; font-weight: 600; color: var(--link); margin: 0 0 28px; max-width: 48ch; }
+  .intro { max-width: 62ch; margin-bottom: 28px; }
+  .intro p { break-inside: avoid; }
+  .story { font-size: 1.15rem; line-height: 1.55; margin-top: 20px; }
+  .summary { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+  .boundary { font-weight: 700; font-size: 1.15rem; border-left: 4px solid var(--doing); padding-left: 16px; margin: 24px 0; }
+  .body h3 { margin-top: 36px; }
+  figure.trace { max-width: 620px; margin: 8px 0 8px; }
   .links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; padding: 0; list-style: none; font-weight: 600; }
 
   /* The trace: the one bold element */
-  figure.trace { margin: 0; }
   .trace pre {
     margin: 0;
     background: var(--trace-bg);
@@ -134,7 +135,7 @@
   footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; }
 
   @media (max-width: 860px) {
-    header.hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 56px 0 48px; }
+    header.hero { padding: 56px 0 48px; }
     .sec { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   }
   @media (max-width: 520px) {
@@ -149,18 +150,46 @@
 <div class="wrap">
 
   <header class="hero">
-    <div>
-      <p class="name">Venkata Pedereddla, Halifax, Canada</p>
-      <h1>I've run AI programs for years. Now I build the agents myself.</h1>
-      <p class="lede">I'm a technical program manager with 20+ years from network engineering to AI delivery at IBM and Microsoft. I'm working toward leading AI delivery organizations, and this site is my public build log: what I'm making on Claude, how it's guarded, and what I learned.</p>
-      <ul class="links">
-        <li><a href="#jobpilot">See the agent</a></li>
-        <li><a href="https://github.com/venkata-agentic">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/venkatapedereddla">LinkedIn</a></li>
-      </ul>
+    <p class="name">Venkata Pedereddla, Halifax, Canada</p>
+    <h1>I've spent two decades leading technology delivery. Today I'm exploring what happens when AI becomes part of the delivery team.</h1>
+    <p class="tagline">Building practical AI agents, with the governance needed to trust them.</p>
+    <div class="intro">
+      <p>I'm a technical program manager with 20+ years of experience spanning network engineering, enterprise transformation and delivery at IBM and Microsoft.</p>
+      <p>My focus now is turning AI from a tool people use into systems that do real work safely, transparently and under human control.</p>
+      <p>This site is my public build log: the agents I build, the architecture behind them, the guardrails that constrain them, and what I learn along the way.</p>
     </div>
+    <ul class="links">
+      <li><a href="#jobpilot">View JobPilot</a></li>
+      <li><a href="https://github.com/venkata-agentic">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/venkatapedereddla">LinkedIn</a></li>
+    </ul>
+  </header>
 
-    <figure class="trace" aria-labelledby="trace-cap">
+  <main>
+    <section aria-labelledby="h-do">
+      <div class="sec">
+        <h2 id="h-do">What I do</h2>
+        <div class="body">
+          <ul class="rules">
+            <li>Technical program manager focused on AI delivery</li>
+            <li>Leading AI initiatives from proof of concept to governed production</li>
+            <li>20+ years across infrastructure, operations, transformation and software delivery</li>
+            <li>Experience at IBM, Microsoft, HCL, Wipro and ACI Worldwide</li>
+          </ul>
+          <p class="story">I started my career configuring routers and troubleshooting networks. Today I help organizations deliver AI solutions at enterprise scale. That path shapes how I build agents: useful enough to create value, governed enough to earn trust.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="jobpilot" aria-labelledby="h-jobpilot">
+      <div class="sec">
+        <h2 id="h-jobpilot">JobPilot</h2>
+        <div class="body">
+          <p class="summary">An AI agent that does the research phase of a job search and leaves the decisions to me.</p>
+          <p>Every weekday it searches for my target roles, reads each posting in full, evaluates the fit against my background, and writes a report explaining what it recommends and why. It runs unattended through Claude Code on a schedule.</p>
+          <p class="boundary">It can research on its own. It cannot apply.<br>That boundary is intentional.</p>
+
+          <figure class="trace" aria-labelledby="trace-cap">
 <pre><span class="line"><span class="k">run</span>     2026-11-24 17:56   unattended, scheduled
 </span><span class="line"><span class="k">read</span>    preferences.yaml  master_resume.md
 </span><span class="line"><span class="k">tool</span>    search_jobs        x18
@@ -169,32 +198,27 @@
 </span><span class="line"><span class="gate">gate</span>    submit             0 sent, by design
 </span><span class="line"><span class="k">report</span>  jobs/reports/2026-11-24.md
 </span><span class="line"><span class="ok">done</span>    exit 0             5 min 34 s</span></pre>
-      <figcaption id="trace-cap">Today's run of JobPilot, my job-search agent, condensed from its log. It searches and reads postings on its own. Applying stays with me.</figcaption>
-    </figure>
-  </header>
+            <figcaption id="trace-cap">Today's run, condensed from the agent's log.</figcaption>
+          </figure>
 
-  <main>
-    <section id="jobpilot" aria-labelledby="h-jobpilot">
-      <div class="sec">
-        <h2 id="h-jobpilot">What I'm building</h2>
-        <div class="body">
-          <h3>JobPilot, a job-search agent on Claude</h3>
-          <p>Every weekday it searches Indeed for program and AI-delivery roles in Canada, the US and India, reads each posting in full, keeps the ones that fit my background, and writes a report explaining what it kept and skipped. It runs headless through Claude Code on a Windows schedule, with no one watching.</p>
+          <h3>AI capability without losing control</h3>
+          <p>Many agent demos focus on what the model can do. I'm just as interested in what it should not do. JobPilot runs under explicit constraints:</p>
+          <ul class="rules">
+            <li>It can write only to one approved folder. Every other tool is denied.</li>
+            <li>It never submits an application.</li>
+            <li>Judgment calls, like work-authorization questions, come back to me marked "needs my answer".</li>
+            <li>Unknown information stays unknown. It leaves a field empty rather than guess.</li>
+            <li>It uses only job sources that allow automated access.</li>
+          </ul>
+          <p>A trustworthy AI system needs boundaries as much as capabilities.</p>
 
+          <h3>Where the build stands</h3>
           <ol class="milestones" aria-label="Build progress, in order">
             <li><span class="status s-done">Done</span><span>Project setup: master resume, preferences, a tracker and 10 real postings</span></li>
             <li><span class="status s-done">Running</span><span>Daily unattended search with a written report per run</span></li>
-            <li><span class="status s-doing">In progress</span><span>Posting parser: every job as a validated record, with unknown facts left empty instead of guessed</span></li>
-            <li><span class="status s-next">Next</span><span>Fit scorer measured against my own labels, then a tailoring skill, a tracker MCP server and an approval-gated apply step</span></li>
+            <li><span class="status s-doing">In progress</span><span>Posting parser: every job as a validated record</span></li>
+            <li><span class="status s-next">Next</span><span>A fit scorer measured against my own labels, a resume-tailoring skill, a tracker MCP server and an approval-gated apply step</span></li>
           </ol>
-
-          <p>The guardrails matter as much as the features:</p>
-          <ul class="rules">
-            <li>The agent can read anything in the project but can only write inside its jobs folder. Every other tool is denied.</li>
-            <li>It never fills in, starts or submits an application. I click Submit.</li>
-            <li>Any work-authorization question comes back marked "needs my answer". It doesn't guess.</li>
-            <li>It only uses sources that allow automated access. No scraping.</li>
-          </ul>
           <p><a href="https://github.com/venkata-agentic/job-pilot">Code and design notes on GitHub</a></p>
         </div>
       </div>
@@ -204,12 +228,10 @@
       <div class="sec">
         <h2 id="h-log">Build log</h2>
         <div class="body">
-          <p>What I learned building on Claude, newest first.</p>
           <dl class="log">
-            <div><dt>Nov 24, 2026</dt><dd>Third scheduled run: 18 searches, 26 postings read in full, 12 saved, nothing submitted. Each saved role comes with a one-line reason and a list of gaps to check before applying.</dd></div>
-            <div><dt>Nov 22, 2026</dt><dd>First unattended run. An agent with no one watching needs an explicit tool allowlist, so the scheduled script names the few tools it may use and limits writes to one folder.</dd></div>
+            <div><dt>Nov 24, 2026</dt><dd>Third scheduled run: 18 searches, 26 postings read, 12 saved, nothing submitted. Each saved role comes with a one-line reason and the gaps to check before applying.</dd></div>
+            <div><dt>Nov 22, 2026</dt><dd>First unattended run. An agent with no one watching needs an explicit tool allowlist, so the scheduled script names the few tools it may use.</dd></div>
             <div><dt>Nov 22, 2026</dt><dd>Strict structured output enforces the schema's shape but not every constraint. Length limits still need a check in code.</dd></div>
-            <div><dt>Nov 22, 2026</dt><dd>When a posting doesn't state a remote policy, "unknown" is the right answer. A confident guess is worse than an empty field.</dd></div>
           </dl>
         </div>
       </div>
@@ -224,25 +246,8 @@
             <li>Claude Associate (Anthropic, 2026)</li>
             <li>PMI-CPMAI, AI project management</li>
             <li>NVIDIA-Certified Associate: AI Infrastructure and Operations</li>
-            <li>SAFe</li>
-            <li>ITIL</li>
-            <li>CSM and CSPO</li>
+            <li>SAFe, ITIL, CSM and CSPO</li>
             <li>MBA, Information Systems</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="h-career">
-      <div class="sec">
-        <h2 id="h-career">Background</h2>
-        <div class="body">
-          <p>I started as a hands-on network engineer and moved into delivery leadership, so I can follow an engineering trade-off and turn it into a decision executives can act on.</p>
-          <ul class="career">
-            <li><span class="yrs">2019 to now</span><span>IBM Canada: senior project manager and TPM, now leading delivery for an AI advisory engagement from proof of concept to governed production</span></li>
-            <li><span class="yrs">2018 to 2019</span><span>Microsoft: program manager for a $22M shared-services transformation across 100+ sites</span></li>
-            <li><span class="yrs">2012 to 2017</span><span>HCL Technologies: senior manager, global infrastructure programs</span></li>
-            <li><span class="yrs">2006 to 2012</span><span>Wipro and ACI Worldwide: network engineer and infrastructure operations lead</span></li>
           </ul>
         </div>
       </div>
@@ -250,7 +255,7 @@
   </main>
 
   <footer>
-    <p>Built with Claude Code and hosted free on GitHub Pages. Updated as the agent grows.</p>
+    <p>Built with Claude Code and hosted on GitHub Pages. Updated as the agents grow.</p>
   </footer>
 
 </div>
